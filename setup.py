@@ -1,11 +1,11 @@
-from setuptools import setup
+from setuptools import setup,find_packages
 from typing import List
 
 
 
 # Declaring Variable For SetUp Function
 PROJECT_NAME = "housing-pridictors"
-VERSION = "0.0.1"
+VERSION = "0.0.3"
 AUTHOR = "Dattatri Kore"
 DESCRIPTION = "this is a first FSDS batch Machine Learning Project"
 PACKAGES = ["housing"]
@@ -20,7 +20,7 @@ def get_requirements_list()->List[str]:
     name of labraries mentioned in requirements.txt file
     """
     with open(REQUIREMENTS_FILE_NAME) as requirement_file:
-        return requirement_file.readlines()
+        return requirement_file.readlines().remove("-e .")
 
 
 setup(
@@ -28,7 +28,7 @@ setup(
     version=VERSION,
     author= AUTHOR,
     description=DESCRIPTION,
-    packages= PACKAGES,
+    packages= find_packages(),
     install_requires = get_requirements_list()
 
 )
